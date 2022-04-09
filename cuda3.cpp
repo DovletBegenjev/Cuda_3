@@ -26,13 +26,13 @@ int main(int argc, char** argv)
 	S = (float*)malloc(arr_size * arr_size * sizeof(float));
 	
 	cudaError_t cudaStat;
-    cublasStatus_t cublasStatus;
+    	cublasStatus_t cublasStatus;
     
-    // Очистка GPU
-    cudaDeviceReset();
+    	// Очистка GPU
+    	cudaDeviceReset();
 	
-    // Выделение памяти на GPU
-    cudaStat = cudaMalloc((void**)&d_arr1, arr_size * arr_size * sizeof(float));
+    	// Выделение памяти на GPU
+    	cudaStat = cudaMalloc((void**)&d_arr1, arr_size * arr_size * sizeof(float));
 	if (cudaStat != cudaSuccess) {
 		printf ("d_arr1 memory allocation failed\n");
 		return 1;
@@ -44,13 +44,13 @@ int main(int argc, char** argv)
 		return 1;
 	}
 	
-    cudaStat = cudaMalloc((void**)&d_arr2, arr_size * arr_size * sizeof(float));
+   	 cudaStat = cudaMalloc((void**)&d_arr2, arr_size * arr_size * sizeof(float));
 	if (cudaStat != cudaSuccess) {
 		printf ("d_arr2 memory allocation failed\n");
 		return 1;
 	}
 	
-    cudaStat = cudaMalloc((void**)&d_arr3, arr_size * arr_size * sizeof(float));
+    	cudaStat = cudaMalloc((void**)&d_arr3, arr_size * arr_size * sizeof(float));
 	if (cudaStat != cudaSuccess) {
 		printf ("d_arr3 memory allocation failed\n");
 		return 1;
@@ -90,7 +90,7 @@ int main(int argc, char** argv)
 	cudaMemcpy(d_arr2, arr2, arr_size * arr_size * sizeof(float), cudaMemcpyHostToDevice);
 	
 	cublasHandle_t h;
-    cublasCreate(&h);
+    	cublasCreate(&h);
 	
 	const float alpha = 1.0f, beta = 0.0f;
 	
@@ -129,7 +129,7 @@ int main(int argc, char** argv)
 	}
 	
 	// Копирование данных из видеопамяти в оперативную память
-    cudaMemcpy(arr3, d_negative_arr1, arr_size * arr_size * sizeof(float), cudaMemcpyDeviceToHost);
+    	cudaMemcpy(arr3, d_negative_arr1, arr_size * arr_size * sizeof(float), cudaMemcpyDeviceToHost);
 
 	double end_time = clock();
 	double search_time = end_time - start_time;
@@ -148,18 +148,18 @@ int main(int argc, char** argv)
 	cublasDestroy(h);
 	
 	// освобождение памяти на CPU
-    free(arr1);
+    	free(arr1);
 	free(negative_arr1);
-    free(arr2);
-    free(arr3);
+    	free(arr2);
+    	free(arr3);
 	free(S);
 	
-    // освобождение памяти на GPU
-    cudaFree(d_arr1);
+    	// освобождение памяти на GPU
+    	cudaFree(d_arr1);
 	cudaFree(d_negative_arr1);
-    cudaFree(d_arr2);
-    cudaFree(d_arr3);
+   	cudaFree(d_arr2);
+    	cudaFree(d_arr3);
 	cudaFree(d_S);
         
-    return 0;
+    	return 0;
 }
