@@ -33,31 +33,36 @@ int main(int argc, char** argv)
 	
     	// Выделение памяти на GPU
     	cudaStat = cudaMalloc((void**)&d_arr1, arr_size * arr_size * sizeof(float));
-	if (cudaStat != cudaSuccess) {
+	if (cudaStat != cudaSuccess) 
+	{
 		printf ("d_arr1 memory allocation failed\n");
 		return 1;
 	}
 	
 	cudaStat = cudaMalloc((void**)&d_negative_arr1, arr_size * arr_size * sizeof(float));
-	if (cudaStat != cudaSuccess) {
+	if (cudaStat != cudaSuccess) 
+	{
 		printf ("d_negative_arr1 memory allocation failed\n");
 		return 1;
 	}
 	
    	 cudaStat = cudaMalloc((void**)&d_arr2, arr_size * arr_size * sizeof(float));
-	if (cudaStat != cudaSuccess) {
+	if (cudaStat != cudaSuccess) 
+	{
 		printf ("d_arr2 memory allocation failed\n");
 		return 1;
 	}
 	
     	cudaStat = cudaMalloc((void**)&d_arr3, arr_size * arr_size * sizeof(float));
-	if (cudaStat != cudaSuccess) {
+	if (cudaStat != cudaSuccess) 
+	{
 		printf ("d_arr3 memory allocation failed\n");
 		return 1;
 	}
 	
 	cudaStat = cudaMalloc((void**)&d_S, arr_size * arr_size * sizeof(float));
-	if (cudaStat != cudaSuccess) {
+	if (cudaStat != cudaSuccess) 
+	{
 		printf ("d_S memory allocation failed\n");
 		return 1;
 	}
@@ -125,7 +130,7 @@ int main(int argc, char** argv)
 	if (cublasStatus != CUBLAS_STATUS_SUCCESS) 
 	{
 		printf ("ERROR A x B = %d i=%d \n", cublasStatus, 0);
-	    return 1;
+	    	return 1;
 	}
 	
 	// Копирование данных из видеопамяти в оперативную память
